@@ -13,7 +13,7 @@ export default function Stations() {
 	const { data, error } = useSWR(url, fetcher);
 
 	if (error) return <div>Error...</div>;
-	if (!data) return <div>Loading...;</div>;
+	if (!data) return <div>Loading....</div>;
 
 	// Only re-run the effect if count changes
 
