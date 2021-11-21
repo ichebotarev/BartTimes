@@ -1,16 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+	padding: 0;
+	margin: 0;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@font-face {
+	font-family: "S";
+	src: url(./SuisseIntl-Regular.woff2) format("woff2");
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "test";
+	src: url(./SuisseIntl-Regular.otf) format("open-type");
+	font-style: normal;
+	font-weight: 400;
 }
