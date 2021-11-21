@@ -26,21 +26,23 @@ export default function Stations() {
 
 	let info = [
 		...data.root.stations.station.map((obj, idx) => {
-			return (
+			return (<>
 				<div
 					className={'font-test text-3xl hover:text-altblue cursor-pointer'}
 					key={obj.abbr}
 					onClick={(e) => handleClick(obj.abbr, e, idx)}
 				>
 					{obj.name}
-					<div className={'font-test text-xl'}>
-						{times ? (
-							<Times abbr={clickedStation} key={obj.name} index={idx} clickedIndex={clickedIndex} />
-						) : (
-							''
-						)}
-					</div>
+				
 				</div>
+					<div className={'font-test text-xl'}>
+					{times ? (
+						<Times abbr={clickedStation} key={obj.name} index={idx} clickedIndex={clickedIndex} />
+					) : (
+						''
+					)}
+				</div>
+				</>
 			);
 		})
 	];
