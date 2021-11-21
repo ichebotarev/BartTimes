@@ -8,7 +8,7 @@ export default function Times({ abbr, index, clickedIndex }) {
 	console.log(`index: ${index} clickedindex: ${clickedIndex}`);
 	if (index !== clickedIndex) return '';
 
-	const departureTimeUrl = `http://api.bart.gov/api/etd.aspx?cmd=etd&key=MW9S-E7SL-26DU-VV8V&json=y&orig=${abbr}`;
+	const departureTimeUrl = `https://api.bart.gov/api/etd.aspx?cmd=etd&key=MW9S-E7SL-26DU-VV8V&json=y&orig=${abbr}`;
 
 	//sconst { data, error } = useSWR(stationsUrl, fetcher);
 	const { data, error } = useSWR(() => departureTimeUrl, fetcher);

@@ -47,8 +47,7 @@ export default function Stations() {
 		})
 	];
 
-	console.log(info);
-	console.log(times);
+
 
 	return info;
 }
