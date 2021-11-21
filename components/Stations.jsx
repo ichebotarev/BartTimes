@@ -1,25 +1,52 @@
+import useSWR, { SWRConfig } from 'swr';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Times from './Times';
 
-import useSWR, {SWRConfig} from "swr";
-import Link from 'next/link'
-
-const fetcher = (...args) => fetch(...args).then(res => res.json());
-
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export default function Stations() {
-  const url =
-    "https://api.bart.gov/api/stn.aspx?cmd=stns&key=MW9S-E7SL-26DU-VV8V&json=y";
-  const { data, error } = useSWR(url, fetcher);
+	const [ times, setTimes ] = useState(false);
+	const [ clickedStation, setClickedStation ] = useState('12TH');
+	const [ clickedIndex, setClickedIndex ] = useState('0');
+	const url = 'https://api.bart.gov/api/stn.aspx?cmd=stns&key=MW9S-E7SL-26DU-VV8V&json=y';
+	const { data, error } = useSWR(url, fetcher);
 
-  if (error) return <div>Error...</div>;
-  if (!data) return <div>Loading...;
+	if (error) return <div>Error...</div>;
+	if (!data) return <div>Loading...;</div>;
 
-  </div> 
-  console.log(data.root.stations.station);
-let info = data.root.stations.station.map((obj, idx) => {  return <Link href='/' ><a className={"font-test text-3xl hover:text-altblue cursor-pointer"}>{obj.name}</a></Link>
+	// Only re-run the effect if count changes
 
-}
-)
-  
-  
- return  info;
+	const handleClick = (abbr, e, idx) => {
+		setTimes(!times);
+		setClickedStation(abbr);
+		setClickedIndex(idx);
+		console.log(idx);
+	};
+
+	let info = [
+		...data.root.stations.station.map((obj, idx) => {
+			return (
+				<div
+					className={'font-test text-3xl hover:text-altblue cursor-pointer'}
+					key={obj.abbr}
+					onClick={(e) => handleClick(obj.abbr, e, idx)}
+				>
+					{obj.name}
+					<div className={'font-test text-xl'}>
+						{times ? (
+							<Times abbr={clickedStation} key={obj.name} index={idx} clickedIndex={clickedIndex} />
+						) : (
+							''
+						)}
+					</div>
+				</div>
+			);
+		})
+	];
+
+	console.log(info);
+	console.log(times);
+
+	return info;
 }
