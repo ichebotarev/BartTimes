@@ -22,7 +22,7 @@ export default function Times({ abbr, index, clickedIndex }) {
 	//});
 	let info = 'No Train Data Available';
 	{
-		data.root.station[0].etd ? (info = data.root.station[0].etd[0].estimate[0].minutes) : '';
+		data.root.station[0].etd ? (info = `${data.root.station[0].etd[0].estimate[0].minutes} minutes`) : '';
 	}
 	return info;
 }
