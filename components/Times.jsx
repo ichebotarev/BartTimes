@@ -34,14 +34,15 @@ export default function Times({ abbr, index, clickedIndex }) {
 
 						console.log(nest);
 						return (
-							<div>
-								{' '}
-								{obj.destination}{' '}
-								<div>
-									<div>minutes: {nest[0][0]}</div>
-									<div>direction: {nest[0][2]}</div>
+							<div className="flex space-x-4 ">
+								<div> {obj.destination}: </div>
+
+								<div className="">
+									<div>Minutes: {nest[0][0]}</div>
+									<div>Direction: {nest[0][2]}</div>
 									<div>Line: {nest[0][4]}</div>
 								</div>
+								<br />
 							</div>
 						);
 					})
