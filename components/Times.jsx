@@ -12,7 +12,7 @@ export default function Times({ abbr, index, clickedIndex }) {
 	//sconst { data, error } = useSWR(stationsUrl, fetcher);
 	const { data, error } = useSWR(() => departureTimeUrl, fetcher);
 	if (error) return <div>Error...</div>;
-	if (!data) return <div>Loading...;</div>;
+	if (!data) return <div>Loading...</div>;
 	//console.log(data.root.station[0]);
 	//console.log(abbr);
 
